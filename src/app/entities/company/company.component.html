@@ -1,0 +1,23 @@
+<p-dataTable [value]="companies"
+             [paginator]="true"
+             [rows]="10"
+             [responsive]="true"
+             selectionMode="single"
+             [(selection)]="selectedCompany"
+             (onRowSelect)="onRowSelect($event)"
+             (onRowUnselect)="onRowUnselect($event)"
+             (onDoubleClick)="onDoubleClick($event)"
+             [pageLinks]="4"
+             [rowsPerPageOptions]="[5,10,20]"
+>
+  <p-header>Companies</p-header>
+  <p-column field="id" header="ID"></p-column>
+  <p-column field="companyName" header="Name"></p-column>
+  <p-column header="Actions">
+    <ng-template let-company="rowData" pTemplate="body">
+      <button class="btn btn-success" routerLink="/entities/company/{{company.id}}"><fa name="list-ul"></fa>View</button>
+      <button class="btn btn-danger" (click)="deleteCompany(company)"><fa name="trash"></fa>Delete</button>
+    </ng-template>
+  </p-column>
+  <p-footer>{{selectionMessage}}</p-footer>
+</p-dataTable>

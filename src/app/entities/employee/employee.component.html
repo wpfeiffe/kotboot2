@@ -1,0 +1,24 @@
+<p-dataTable [value]="employees"
+             [paginator]="true"
+             [rows]="10"
+             [responsive]="true"
+             selectionMode="single"
+             (onRowSelect)="onRowSelect($event)"
+             (onRowUnselect)="onRowUnselect($event)"
+             [pageLinks]="4"
+             [rowsPerPageOptions]="[5,10,20]"
+>
+  <p-header>Employees</p-header>
+  <p-column field="id" header="ID"></p-column>
+  <p-column field="firstName" header="First"></p-column>
+  <p-column field="lastName" header="Last"></p-column>
+  <p-column field="title" header="Title"></p-column>
+  <p-column field="department.deptName" header="Dept"></p-column>
+  <p-column header="Actions">
+    <ng-template let-employee="rowData" pTemplate="body">
+      <button class="btn btn-success" routerLink="/entities/employee/{{employee.id}}"><fa name="list-ul"></fa>View</button>
+      <button class="btn btn-danger" (click)="deleteEmployee(employee)"><fa name="trash"></fa>Delete</button>
+    </ng-template>
+  </p-column>
+  <p-footer>{{selectionMessage}}</p-footer>
+</p-dataTable>

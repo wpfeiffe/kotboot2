@@ -1,0 +1,18 @@
+<div class="card">
+  <h3 class="card-header">Company</h3>
+  <div class="card-block">
+    <form #f="ngForm"
+          (ngSubmit)="onSubmit(f.value)">
+      <div class="form-group row">
+        <label for="companyId" class="col-2 col-form-label">Company ID</label>
+        <div class="col-10"><input type="text" id="companyId" placeholder="id" name="companyId" [(ngModel)]="company.id"></div>
+      </div>
+      <div class="form-group row">
+        <label for="companyName" class="col-2 col-form-label">Company Name</label>
+        <div class="col-10"><input type="text" id="companyName" placeholder="name" name="companyName" [(ngModel)]="company.companyName"></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" (click)="save()"><fa name="database"></fa>Save</button>
+      <button type="button" class="btn btn-danger btn-sm" (click)="goBack()"><fa name="chevron-left"></fa>Cancel</button>
+    </form>
+  </div>
+</div>
